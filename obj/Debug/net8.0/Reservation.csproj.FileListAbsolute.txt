@@ -1,0 +1,8 @@
+D:\Users\RANCC Design\Desktop\Reservation\obj\Debug\net8.0\Reservation.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\RANCC Design\Desktop\Reservation\obj\Debug\net8.0\Reservation.AssemblyInfoInputs.cache
+D:\Users\RANCC Design\Desktop\Reservation\obj\Debug\net8.0\Reservation.AssemblyInfo.cs
+D:\Users\RANCC Design\Desktop\Reservation\obj\Debug\net8.0\Reservation.csproj.CoreCompileInputs.cache
+D:\Users\RANCC Design\Desktop\Reservation\obj\Debug\net8.0\Reservation.MvcApplicationPartsAssemblyInfo.cache
+D:\Users\RANCC Design\Desktop\Reservation\obj\Debug\net8.0\Reservation.RazorAssemblyInfo.cache
+D:\Users\RANCC Design\Desktop\Reservation\obj\Debug\net8.0\Reservation.RazorAssemblyInfo.cs
+D:\Users\RANCC Design\Desktop\Reservation\obj\Debug\net8.0\Reservation.sourcelink.json

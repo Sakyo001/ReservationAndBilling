@@ -1,0 +1,315 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Reservation & Billing Management System</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: Inter;
+        }
+
+        .header-custom {
+            background-color: #ffffff;
+            padding: 1rem 1rem;
+        }
+
+        .nav-custom {
+            background-color: #d4c4b7;
+            border-top: 1px solid #bba99c;
+            padding: 1rem 1rem;
+        }
+
+        .nav-link {
+            color: #333 !important;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem !important;
+        }
+
+            .nav-link.active {
+                font-weight: bold; /* Make the active link bold */
+                color: black;
+            }
+
+        .create-btn {
+            background-color: #3B1F00FF;
+            color: white;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+        }
+
+            .create-btn:hover {
+                background-color: #3a2815;
+                color: white;
+            }
+
+        .room-card {
+            border: 1px solid #dee2e6;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            margin-top: 20px;
+        }
+
+        .update-btn {
+            background-color: #3B1F00FF;
+            color: white;
+            font-size: 0.9rem;
+            padding: 0.4rem;
+        }
+
+            .update-btn:hover {
+                background-color: #3a2815;
+                color: white;
+            }
+
+        .delete-btn {
+            background-color: #A61010FF;
+            color: white;
+            font-size: 0.9rem;
+            padding: 0.4rem;
+        }
+
+        .form-check-input:checked {
+            background-color: #4a3525;
+            border-color: #4a3525;
+        }
+
+        .sidebar {
+            padding-right: 2rem;
+        }
+
+        .room-type-filter {
+            font-size: 0.9rem;
+        }
+
+        .timestamp {
+            font-size: 0.8rem;
+            color: #666;
+            padding: 0.5rem 1rem;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Update for Price */
+        .price {
+            font-size: 16px; /* Same size as room type title */
+            line-height: 26px;
+            font-weight: 700;
+            color: #171A1FFF;
+            margin-bottom: 1rem;
+        }
+
+        .btn-container {
+            gap: 0.5rem;
+        }
+
+        /* Styles for Room Type Title */
+        .room-type-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #4a3525; /* Match your button color */
+            background-color: #f0f0f0; /* Set gray background */
+            padding: 0.5rem 1rem; /* Add some padding for visual appeal */
+            border-radius: 0.25rem; /* Optional: Add border radius for rounded corners */
+        }
+
+        .category-container {
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-custom">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-2">
+                <img src="~/Content/Images/logo.png" alt="Hotel Logo" style="height: 30px;"> 
+                <span class="fs-6">HOTEL RESERVATION & BILLING MANAGEMENT SYSTEM</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <i class="fas fa-user"></i>
+                <span>Admin</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-custom">
+        <div class="container-fluid">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Reservation Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="RoomsManagement">Rooms Management</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Customer's Information</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Billing Management</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid mt-5 p-4">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 sidebar">
+                <div class="category-container">
+                    <!-- Added Category Container -->
+                    <h5 class="room-type-title">Room Type</h5> <!-- Added Room Type Title -->
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="standard" checked>
+                        <label class="form-check-label" for="standard">
+                            Standard Room
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="deluxe">
+                        <label class="form-check-label" for="deluxe">
+                            Deluxe Room
+                        </label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="premium">
+                        <label class="form-check-label" for="premium">
+                            Premium Room
+                        </label>
+                    </div>
+                    <button class="btn create-btn w-100">Create New</button>
+                </div>
+            </div>
+
+            <!-- Category Container -->
+            <div class="col-md-10">
+                <div class="row g-4">
+                    <!-- Room Card 1 -->
+                    <div class="col-md-4">
+                        <div class="card room-card">
+                            <img src="~/Content/Images/room1.png" class="card-img-top" alt="Standard Room 201">
+                            <div class="card-body">
+                                <h5 class="card-title">Standard Room 201</h5>
+                                <p class="small mb-2">
+                                    <span>• 2 guests</span>
+                                    <span>• 1 bed</span>
+                                    <span>• Balcony</span>
+                                </p>
+                                <p class="price">₱1,200/night</p>
+                                <div class="d-flex btn-container">
+                                    <button class="btn update-btn flex-grow-1">Update</button>
+                                    <button class="btn delete-btn flex-grow-1">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Room Card 2 -->
+                    <div class="col-md-4">
+                        <div class="card room-card">
+                            <img src="~/Content/Images/room1.png" class="card-img-top" alt="Standard Room 202">
+                            <div class="card-body">
+                                <h5 class="card-title">Standard Room 202</h5>
+                                <p class="small mb-2">
+                                    <span>• 2 guests</span>
+                                    <span>• 1 bed</span>
+                                    <span>• Balcony</span>
+                                </p>
+                                <p class="price">₱1,200/night</p>
+                                <div class="d-flex btn-container">
+                                    <button class="btn update-btn flex-grow-1">Update</button>
+                                    <button class="btn delete-btn flex-grow-1">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Room Card 3 -->
+                    <div class="col-md-4">
+                        <div class="card room-card">
+                            <img src="~/Content/Images/room1.png" class="card-img-top" alt="Standard Room 203">
+                            <div class="card-body">
+                                <h5 class="card-title">Standard Room 203</h5>
+                                <p class="small mb-2">
+                                    <span>• 2 guests</span>
+                                    <span>• 1 bed</span>
+                                    <span>• Balcony</span>
+                                </p>
+                                <p class="price">₱1,200/night</p>
+                                <div class="d-flex btn-container">
+                                    <button class="btn update-btn flex-grow-1">Update</button>
+                                    <button class="btn delete-btn flex-grow-1">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card room-card">
+                            <img src="~/Content/Images/room1.png" class="card-img-top" alt="Standard Room 202">
+                            <div class="card-body">
+                                <h5 class="card-title">Standard Room 202</h5>
+                                <p class="small mb-2">
+                                    <span>• 2 guests</span>
+                                    <span>• 1 bed</span>
+                                    <span>• Balcony</span>
+                                </p>
+                                <p class="price">₱1,200/night</p>
+                                <div class="d-flex btn-container">
+                                    <button class="btn update-btn flex-grow-1">Update</button>
+                                    <button class="btn delete-btn flex-grow-1">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Room Card 3 -->
+                    <div class="col-md-4">
+                        <div class="card room-card">
+                            <img src="~/Content/Images/room1.png" class="card-img-top" alt="Standard Room 203">
+                            <div class="card-body">
+                                <h5 class="card-title">Standard Room 203</h5>
+                                <p class="small mb-2">
+                                    <span>• 2 guests</span>
+                                    <span>• 1 bed</span>
+                                    <span>• Balcony</span>
+                                </p>
+                                <p class="price">₱1,200/night</p>
+                                <div class="d-flex btn-container">
+                                    <button class="btn update-btn flex-grow-1">Update</button>
+                                    <button class="btn delete-btn flex-grow-1">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
